@@ -1,0 +1,43 @@
+## Solution : NodeJS
+
+
+const axios = require('axios');
+
+async function getDiscountPrice(barcode) {
+    try {
+        // Construct the URL for the API call
+        const apiUrl = `https://jsonmock.hackerrank.com/api/inventory?barcode=${barcode}`;
+        
+        // Make GET request to the API
+        const response = await axios.get(apiUrl);
+        
+        // Extract data from response
+        const { data } = response.data;
+        
+        // Check if data is empty (barcode not found)
+        if (data.length === 0) {
+            return -1;
+        }
+        
+        // Extract price and discount from the data object
+        const { price, discount } = data[0];
+        
+        // Calculate discounted price
+        const discountedPrice = Math.round(price - (discount / 100) * price);
+        
+        return discountedPrice;
+    } catch (error) {
+        // Handle any errors (e.g., network issue, API response format issue)
+        console.error('Error fetching data:', error.message);
+        return -1; // Return -1 in case of error
+    }
+}
+
+// Example usage:
+async function exampleUsage() {
+    const barcode = '74002314';
+    const discountedPrice = await getDiscountPrice(barcode);
+    console.log(discountedPrice); // Output: 2964
+}
+
+exampleUsage();
