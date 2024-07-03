@@ -140,7 +140,5 @@ An example of the product record from `https://jsonmock.hackerrank.com/api/inven
 }
 ```
 
----
-
 ## ALL THE BEST
-```
+
