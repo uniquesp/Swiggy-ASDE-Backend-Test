@@ -1,4 +1,3 @@
-```markdown
 # Swiggy-ASDE-Backend-Test  (03-07-24)
 
 ## ALL Solutions are Provided in above files
